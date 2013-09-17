@@ -42,6 +42,7 @@ void Aquarius::load() {
 	Wt::WContainerWidget * summaryContainer = new Wt::WContainerWidget();
 	int pluginCount = 0;
 	unsigned int ii = 0;
+	printf("Loading Plugins (Aquarius::load)\n");
 	tabs->addTab(summaryContainer, "Summary");
 	if (pl) {
 		pluginCount = pl->loadPlugins("./");
@@ -76,6 +77,8 @@ void Aquarius::refresh(){
 	for (ii = 0; ii < plugins.size(); ii++){
 		plugins[ii]->refresh();
 	}
+	std::cout << "Refresh being called" << std::endl;
+	printf("Refresh Called/n");
 }
 
 Wt::WApplication *createApplication(const Wt::WEnvironment& env) {
@@ -88,5 +91,6 @@ Wt::WApplication *createApplication(const Wt::WEnvironment& env) {
 }
 
 int main(int argc, char **argv) {
+	printf("Starting Aquarius/n");
 	return Wt::WRun(argc, argv, &createApplication);
 }
